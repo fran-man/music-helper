@@ -39,3 +39,6 @@ octaveWithSharps =
         Note A_Base Sharp,
         Note B_Base Natural
     ]
+
+twoOctavesWithSharps :: [Note]
+twoOctavesWithSharps = concat $ replicate 2 octaveWithSharps

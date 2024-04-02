@@ -1,16 +1,22 @@
 import NotesData
 
 majorScaleInKey :: Note -> [Note]
-majorScaleInKey k = majorScale $ rotateOctaveToKey octaveWithSharps k
+majorScaleInKey k = majorScale $ rotateOctaveToKey twoOctavesWithSharps k
 
 majorScale :: [Note] -> [Note]
 majorScale n@(t:ns) =  notesInScale n majorScalePattern ++ [t]
 
 tonicChordInKey :: Note -> [Note]
-tonicChordInKey k = tonicChord $ rotateOctaveToKey octaveWithSharps k
+tonicChordInKey k = tonicChord $ rotateOctaveToKey twoOctavesWithSharps k
 
 tonicChord :: [Note] -> [Note]
-tonicChord n@(t:ns) =  notesInScale n tonicChordPattern
+tonicChord n =  notesInScale n tonicChordPattern
+
+fourthChordInKey :: Note -> [Note]
+fourthChordInKey k = fourthChord $ rotateOctaveToKey twoOctavesWithSharps k
+
+fourthChord :: [Note] -> [Note]
+fourthChord n =  notesInScale n fourthChordPattern
 
 notesInScale :: [b] -> [Bool] -> [b]
 notesInScale ns p = map fst $ filter (\(_,b) -> b == True) (combineListsAsPairs ns p)
@@ -24,6 +30,9 @@ majorScalePattern = [True, False, True, False, True, True, False, True, False, T
 tonicChordPattern :: [Bool]
 tonicChordPattern = [True, False, False, False, True, False, False, True, False, False, False, False]
 
+fourthChordPattern :: [Bool]
+fourthChordPattern = [False, False, False, False, False, True, False, False, False, True, False, False, True, False, False, False, False, False, False, False, False, False, False, False]
+
 rotateOctaveToKey :: Eq t => [t] -> t -> [t]
 rotateOctaveToKey [] _ = []
 rotateOctaveToKey [n] _ = [n]
@@ -35,3 +44,4 @@ main :: IO ()
 main = do
     print (majorScaleInKey (Note C_Base Natural))
     print (tonicChordInKey (Note C_Base Natural))
+    print (fourthChordInKey (Note C_Base Natural))
