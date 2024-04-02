@@ -53,7 +53,7 @@ executable music-helper
     main-is:          music-helper.hs
 
     -- Modules included in this executable, other than Main.
-    other-modules: NotesData
+    other-modules: NotesData,Chords,MusicUtils,Scales
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
