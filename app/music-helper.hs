@@ -10,8 +10,8 @@ main = do
 printForKey :: Note -> IO ()
 printForKey n = do
     print (majorScaleInKey n)
-    print (tonicChordInKey n)
-    print (fourthChordInKey n)
-    print (fifthChordInKey n)
-    print (d7ChordInKey n)
+    print (generateChordInKey n TONIC)
+    print (generateChordInKey n FOURTH)
+    print (generateChordInKey n FIFTH)
+    print (generateChordInKey n D7)
     putStrLn (replicate 20 '=')

@@ -3,6 +3,8 @@ module Chords where
 import NotesData
 import MusicUtils
 
+data ChordType = TONIC | FOURTH | FIFTH | D7 deriving Eq
+
 tonicChordPattern :: [Bool]
 tonicChordPattern = [True, False, False, False, True, False, False, True, False, False, False, False]
 
@@ -15,26 +17,13 @@ fifthChordPattern = [False, False, False, False, False, False, False, True, Fals
 d7ChordPattern :: [Bool]
 d7ChordPattern = [False, False, False, False, False, False, False, True, False, False, False, True, False, False, True, False, False, True, False, False, False, False, False, False]
 
-tonicChordInKey :: Note -> [Note]
-tonicChordInKey k = tonicChord $ rotateOctaveToKey twoOctavesWithSharps k
+generateChordInKey :: Note -> ChordType -> [Note]
+generateChordInKey k chord = notesInScale notes chordPattern
+                                  where notes = rotateOctaveToKey twoOctavesWithSharps k
+                                        chordPattern = generateChordPattern chord
 
-tonicChord :: [Note] -> [Note]
-tonicChord n =  notesInScale n tonicChordPattern
-
-fourthChordInKey :: Note -> [Note]
-fourthChordInKey k = fourthChord $ rotateOctaveToKey twoOctavesWithSharps k
-
-fourthChord :: [Note] -> [Note]
-fourthChord n =  notesInScale n fourthChordPattern
-
-fifthChordInKey :: Note -> [Note]
-fifthChordInKey k = fifthChord $ rotateOctaveToKey twoOctavesWithSharps k
-
-fifthChord :: [Note] -> [Note]
-fifthChord n =  notesInScale n fifthChordPattern
-
-d7ChordInKey :: Note -> [Note]
-d7ChordInKey k = d7Chord $ rotateOctaveToKey twoOctavesWithSharps k
-
-d7Chord :: [Note] -> [Note]
-d7Chord n =  notesInScale n d7ChordPattern
+generateChordPattern :: ChordType -> [Bool]
+generateChordPattern TONIC = tonicChordPattern
+generateChordPattern FOURTH = fourthChordPattern
+generateChordPattern FIFTH = fifthChordPattern
+generateChordPattern D7 = d7ChordPattern
