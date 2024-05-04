@@ -13,4 +13,5 @@ printForKey n = do
     print (tonicChordInKey n)
     print (fourthChordInKey n)
     print (fifthChordInKey n)
+    print (d7ChordInKey n)
     putStrLn (replicate 20 '=')

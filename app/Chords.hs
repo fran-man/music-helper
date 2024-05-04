@@ -12,6 +12,9 @@ fourthChordPattern = [False, False, False, False, False, True, False, False, Fal
 fifthChordPattern :: [Bool]
 fifthChordPattern = [False, False, False, False, False, False, False, True, False, False, False, True, False, False, True, False, False, False, False, False, False, False, False, False]
 
+d7ChordPattern :: [Bool]
+d7ChordPattern = [False, False, False, False, False, False, False, True, False, False, False, True, False, False, True, False, False, True, False, False, False, False, False, False]
+
 tonicChordInKey :: Note -> [Note]
 tonicChordInKey k = tonicChord $ rotateOctaveToKey twoOctavesWithSharps k
 
@@ -29,3 +32,9 @@ fifthChordInKey k = fifthChord $ rotateOctaveToKey twoOctavesWithSharps k
 
 fifthChord :: [Note] -> [Note]
 fifthChord n =  notesInScale n fifthChordPattern
+
+d7ChordInKey :: Note -> [Note]
+d7ChordInKey k = d7Chord $ rotateOctaveToKey twoOctavesWithSharps k
+
+d7Chord :: [Note] -> [Note]
+d7Chord n =  notesInScale n d7ChordPattern
