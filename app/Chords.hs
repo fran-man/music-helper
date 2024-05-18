@@ -3,7 +3,7 @@ module Chords where
 import NotesData
 import MusicUtils
 
-data ChordType = TONIC | FOURTH | FIFTH | D7 deriving Eq
+data ChordType = TONIC | FOURTH | FIFTH | D7 deriving (Eq,Show)
 
 tonicChordPattern :: [Bool]
 tonicChordPattern = [True, False, False, False, True, False, False, True, False, False, False, False]
