@@ -18,6 +18,11 @@ instance Show Semitone where
     show Flat = "b"
     show Natural = ""
 
+stLongName :: Semitone -> String
+stLongName Sharp = "Sharp"
+stLongName Flat = "Flat"
+stLongName Natural = "Natural"
+
 data Note = Note BaseNote Semitone deriving Eq
 
 instance Show Note where
