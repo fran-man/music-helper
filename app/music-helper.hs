@@ -16,9 +16,10 @@ selectOptions = do
     noteOption <- selectNoteOption
     semitoneOption <- selectSemitoneOption
     scaleOrChordOption <- selectScaleOrChordOption
-    (putStr.show) noteOption
-    (putStr.show) semitoneOption
-    (putStrLn.show) scaleOrChordOption
+    let key = (Note noteOption semitoneOption)
+    case scaleOrChordOption of
+        Scale _ -> print $ majorScaleInKey key
+        Chord c -> print $ generateChordInKey key c
 
 selectNoteOption :: IO (BaseNote)
 selectNoteOption = do
