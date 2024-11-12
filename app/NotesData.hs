@@ -66,7 +66,9 @@ allBaseNotes :: [BaseNote]
 allBaseNotes = [A_Base, B_Base, C_Base, D_Base, E_Base, F_Base, G_Base]
 
 twoOctaves :: Note -> [Note]
-twoOctaves note = case note of
-    Note _ Flat -> concat $ replicate 2 octaveWithFlats
-    Note _ Sharp -> concat $ replicate 2 octaveWithSharps
-    Note _ Natural -> concat $ replicate 2 octaveWithSharps
+twoOctaves note = concat $ replicate 2 octave
+    where 
+        octave = case note of
+            (Note _ Flat) -> octaveWithFlats
+            (Note _ Sharp) -> octaveWithSharps
+            (Note _ Natural) -> octaveWithSharps
