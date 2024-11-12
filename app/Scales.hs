@@ -9,7 +9,7 @@ instance Show ScaleType where
     show MAJOR = "Major"
 
 majorScaleInKey :: Note -> [Note]
-majorScaleInKey k = majorScale $ rotateOctaveToKey twoOctavesWithSharps k
+majorScaleInKey k = majorScale $ rotateOctaveToKey (twoOctaves k) k
 
 majorScale :: [Note] -> [Note]
 majorScale [] = []

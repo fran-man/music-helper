@@ -25,7 +25,7 @@ d7ChordPattern = [False, False, False, False, False, False, False, True, False, 
 
 generateChordInKey :: Note -> ChordType -> [Note]
 generateChordInKey k chord = notesInScale notes chordPattern
-                                  where notes = rotateOctaveToKey twoOctavesWithSharps k
+                                  where notes = rotateOctaveToKey (twoOctaves k) k
                                         chordPattern = generateChordPattern chord
 
 generateChordPattern :: ChordType -> [Bool]

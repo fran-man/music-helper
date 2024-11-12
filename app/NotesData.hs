@@ -45,8 +45,28 @@ octaveWithSharps =
         Note B_Base Natural
     ]
 
+octaveWithFlats :: [Note]
+octaveWithFlats = 
+    [
+        Note C_Base Natural,
+        Note D_Base Flat,
+        Note D_Base Natural,
+        Note E_Base Flat,
+        Note E_Base Natural,
+        Note F_Base Natural,
+        Note G_Base Flat,
+        Note G_Base Natural,
+        Note A_Base Flat,
+        Note A_Base Natural,
+        Note B_Base Flat,
+        Note B_Base Natural
+    ]
+
 allBaseNotes :: [BaseNote]
 allBaseNotes = [A_Base, B_Base, C_Base, D_Base, E_Base, F_Base, G_Base]
 
-twoOctavesWithSharps :: [Note]
-twoOctavesWithSharps = concat $ replicate 2 octaveWithSharps
+twoOctaves :: Note -> [Note]
+twoOctaves note = case note of
+    Note _ Flat -> concat $ replicate 2 octaveWithFlats
+    Note _ Sharp -> concat $ replicate 2 octaveWithSharps
+    Note _ Natural -> concat $ replicate 2 octaveWithSharps
