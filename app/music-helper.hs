@@ -1,9 +1,10 @@
 import Chords
 import Text.Read (readMaybe)
 import NotesData
-import Scales
-import ScaleOrChordType
-import System.IO
+    ( Note(Note), Semitone(..), BaseNote, stLongName, allBaseNotes )
+import Scales ( ScaleType(MAJOR), majorScaleInKey )
+import ScaleOrChordType ( ScaleOrChordType(..) )
+import System.IO ( hSetBuffering, stdout, BufferMode(NoBuffering) )
 
 main :: IO ()
 main = do
